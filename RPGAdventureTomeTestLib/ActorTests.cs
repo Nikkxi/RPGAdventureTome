@@ -1,14 +1,18 @@
 ﻿using AdventureTome.Actors;
 using NUnit.Framework;
+using RPGAdventureTomeTestLib.Utils;
+using System.Collections.Generic;
 
 namespace AdventureTomeTestLib
 {
     class ActorTests
     {
+        private DataLoader loader;
+
         [SetUp]
         public void Setup()
         {
-
+            loader = new DataLoader();
         }
 
         [Test]
@@ -17,21 +21,38 @@ namespace AdventureTomeTestLib
             int health = 10;
             int attack = 3;
 
-            Breed newBreed = new Breed(health, attack);
+            Breed newBreed = new Breed("Orc", health, attack);
 
             Assert.NotNull(newBreed, "The new breed was not created.");
         }
 
-        public void CreateChildBreed()
+        [Test]
+        public void LoadBreedsTest()
         {
-            Breed parentBreed = new Breed(10, 3);
+            List<Breed> breeds = loader.LoadMonsterBreeds();
 
-            Breed childBreed = new Breed(parentBreed, 8, 2);
+            Assert.IsNotEmpty(breeds);
+            Assert.AreEqual(breeds.Count, 3);
+        }
 
+        [Test]
+        public void CloneMonsterTest()
+        {
+            List<Breed> breeds = loader.LoadMonsterBreeds();
 
-            Assert.NotNull(childBreed.getParent(), "Parent was not linked.");
-            Assert.AreNotEqual(parentBreed.getHealth(), childBreed.getHealth(), "The child's health matches the parent's health. Expected NOT EQUAL.");
-            Assert.AreNotEqual(parentBreed.getAttack(), childBreed.getAttack(), "The child's attack matches the parent's attack. Expected NOT EQUAL.");
+            List<Monster> clones = new List<Monster>();
+
+            foreach(Breed breed in breeds)
+            {
+                clones.Add(breed.newMonster());
+            }
+
+            int index = 0;
+            foreach(Monster clone in clones)
+            {
+                Assert.AreEqual(clone.breed, breeds[index]);
+                index++;
+            }
         }
     }
 }

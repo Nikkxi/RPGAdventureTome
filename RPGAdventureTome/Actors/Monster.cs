@@ -8,7 +8,7 @@ namespace AdventureTome.Actors
 {
     public class Monster : Actor
     {
-        private Breed breed;
+        public Breed breed;
 
         private int maxHealth;
         private int currentHealth;
@@ -18,17 +18,17 @@ namespace AdventureTome.Actors
         internal Monster(Breed breed)
         {
             this.breed = breed;
-            maxHealth = breed.getHealth();
+            maxHealth = breed.health;
         }
 
         public String Name()
         {
-            return breed.GetType().Name;
+            return breed.name;
         }
 
         public int getAttack()
         {
-            return breed.getAttack();
+            return breed.attack;
         }
 
         public void takeDamage(int damage)

@@ -17,4 +17,10 @@
     <ProjectReference Include="..\RPGAdventureTome\RPGAdventureTome.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\MonsterBreeds.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
