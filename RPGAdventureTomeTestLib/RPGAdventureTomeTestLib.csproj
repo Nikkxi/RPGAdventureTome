@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdventureTome\RPGAdventureTome.csproj" />
+    <ProjectReference Include="..\RPGAdventureTome\RPGAdventureTome.csproj" />
   </ItemGroup>
 
 </Project>
