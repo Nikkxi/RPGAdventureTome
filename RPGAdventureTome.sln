@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGAdventureTome", "RPGAdventureTome\RPGAdventureTome.csproj", "{98052E70-111C-4041-BA00-F3C15FDEDAB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGAdventureTomeTestLib", "RPGAdventureTomeTestLib\RPGAdventureTomeTestLib.csproj", "{E90CC961-BCFF-4E66-8A63-0F5D95C2B6E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98052E70-111C-4041-BA00-F3C15FDEDAB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98052E70-111C-4041-BA00-F3C15FDEDAB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98052E70-111C-4041-BA00-F3C15FDEDAB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98052E70-111C-4041-BA00-F3C15FDEDAB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90CC961-BCFF-4E66-8A63-0F5D95C2B6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90CC961-BCFF-4E66-8A63-0F5D95C2B6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90CC961-BCFF-4E66-8A63-0F5D95C2B6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90CC961-BCFF-4E66-8A63-0F5D95C2B6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90941F67-2835-4641-A128-C77453B2F24B}
+	EndGlobalSection
+EndGlobal
