@@ -7,11 +7,6 @@ namespace AdventureTome.Items
 {
     public abstract class Item
     {
-        public ItemType itemType;
-
-
-
-
         // maybe use this paradigm ???
         public Attack melee;
         public Attack ranged;

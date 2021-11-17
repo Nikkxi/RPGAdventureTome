@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AdventureTome.Capabilities
+namespace RPGAdventureTome.Capabilities
 {
     public abstract class Attack
     {
-        private int minDamage;
-        private int maxDamage;
+        internal int minDamage;
+        internal int maxDamage;
+
+        public Attack(int min, int max)
+        {
+            minDamage = min;
+            maxDamage = max;
+        }
 
         public abstract void hit();
     }

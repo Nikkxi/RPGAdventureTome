@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AdventureTome.Capabilities;
 
 namespace AdventureTome.Items.WeaponBases
 {
@@ -8,7 +9,9 @@ namespace AdventureTome.Items.WeaponBases
     {
         public Bow()
         {
-            itemType = ItemType.WEAPON;
+            ranged = new Attack(2, 6);
         }
+
+
     }
 }
