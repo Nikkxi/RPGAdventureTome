@@ -1,7 +1,8 @@
-﻿using AdventureTome.Actors;
+﻿using RPGAdventureTome.Actors;
 using NUnit.Framework;
 using RPGAdventureTomeTestLib.Utils;
 using System.Collections.Generic;
+using System;
 
 namespace AdventureTomeTestLib
 {
@@ -32,7 +33,16 @@ namespace AdventureTomeTestLib
             List<Breed> breeds = loader.LoadMonsterBreeds();
 
             Assert.IsNotEmpty(breeds);
-            Assert.AreEqual(breeds.Count, 3);
+            Assert.GreaterOrEqual(breeds.Count, 1);
+
+            foreach(Breed breed in breeds){
+                Console.WriteLine("Breed:" + breed.name);
+                if(breed.parent != null)
+                    Console.WriteLine("Parent: " + breed.parent.name);
+                Console.WriteLine("Health: " + breed.health);
+                Console.WriteLine("Attack: " + breed.attack);
+                Console.WriteLine();
+            }
         }
 
         [Test]

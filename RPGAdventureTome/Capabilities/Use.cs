@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AdventureTome.Capabilities
+namespace RPGAdventureTome.Capabilities
 {
     public abstract class Use
     {

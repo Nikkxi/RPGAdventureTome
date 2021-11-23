@@ -6,6 +6,12 @@
 
   <ItemGroup>
     <Folder Include="Spells\" />
+    <Folder Include="Modifiers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Modifiers\" />
+    <None Remove="Modifiers\Prefixes\" />
+    <None Remove="Modifiers\Suffixes\" />
+  </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureTome.Actors
+namespace RPGAdventureTome.Actors
 {
     public class Monster : Actor
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AdventureTome.Actions
+namespace RPGAdventureTome.Actions
 {
     public class ActionResult
     {

@@ -1,4 +1,4 @@
-﻿using AdventureTome.Actors;
+﻿using RPGAdventureTome.Actors;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -30,18 +30,35 @@ namespace RPGAdventureTomeTestLib.Utils
 
             var enumerator = monsterBreeds.RootElement.EnumerateArray();
 
+            // iterate through to create base monster type
             foreach(JsonElement monster in enumerator)
             {
-                var name = monster.GetProperty("name").GetString();
-                var health = monster.GetProperty("health").GetInt32();
-                var attack = monster.GetProperty("attack").GetInt32();
+                var parent = monster.GetProperty("parent").GetString();
 
-                breedList.Add(new Breed(name, health, attack));
+                if(parent.Length == 0)
+                {
+                    var name = monster.GetProperty("name").GetString();
+                    var health = monster.GetProperty("health").GetInt32();
+                    var attack = monster.GetProperty("attack").GetInt32();
+
+                    breedList.Add(new Breed(name, health, attack));
+                }
             }
 
-            foreach(Breed monster in breedList)
+            // iterate through to create monster sub-types
+            foreach (JsonElement monster in enumerator)
             {
+                var parent = monster.GetProperty("parent").GetString();
 
+                if (parent.Length > 0)
+                {
+                    var name = monster.GetProperty("name").GetString();
+                    var health = monster.GetProperty("health").GetInt32();
+                    var attack = monster.GetProperty("attack").GetInt32();
+
+                    var parentBreed = breedList.Find(p => p.name.Equals(parent));
+                    breedList.Add(new Breed(parentBreed, name, health, attack));
+                }
             }
 
             return breedList;

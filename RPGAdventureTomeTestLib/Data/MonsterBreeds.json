@@ -1,15 +1,24 @@
 [
   {
+    "parent": "",
     "name": "Goblin",
     "health": 8,
     "attack": 3
   },
   {
+    "parent": "",
     "name": "Orc",
     "health": 10,
     "attack": 4
   },
   {
+    "parent": "Troll",
+    "name": "Troll Archer",
+    "health": 15,
+    "attack": 5
+  },
+  {
+    "parent": "",
     "name": "Troll",
     "health": 15,
     "attack": 5

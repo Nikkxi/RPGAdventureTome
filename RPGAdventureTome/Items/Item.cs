@@ -1,9 +1,9 @@
-﻿using AdventureTome.Capabilities;
+﻿using RPGAdventureTome.Capabilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AdventureTome.Items
+namespace RPGAdventureTome.Items
 {
     public abstract class Item
     {
