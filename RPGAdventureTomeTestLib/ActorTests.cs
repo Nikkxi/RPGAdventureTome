@@ -2,18 +2,27 @@
 using NUnit.Framework;
 using RPGAdventureTomeTestLib.Utils;
 using System.Collections.Generic;
-using System;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
 
 namespace AdventureTomeTestLib
 {
+    [TestFixture(Author = "SupCMDr", Description = "Actor Creation Tests")]
     class ActorTests
     {
         private DataLoader loader;
+        private ILogger logger;
+
+        private LoggingConfiguration config;
+        private FileTarget logfile;
+        private ConsoleTarget logconsole;
 
         [SetUp]
         public void Setup()
         {
             loader = new DataLoader();
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         [Test]
@@ -35,13 +44,15 @@ namespace AdventureTomeTestLib
             Assert.IsNotEmpty(breeds);
             Assert.GreaterOrEqual(breeds.Count, 1);
 
+
+            logger.Info("TEST: " + TestContext.CurrentContext.Test.Name);
             foreach(Breed breed in breeds){
-                Console.WriteLine("Breed:" + breed.name);
+                logger.Info("Breed: " + breed.name);
                 if(breed.parent != null)
-                    Console.WriteLine("Parent: " + breed.parent.name);
-                Console.WriteLine("Health: " + breed.health);
-                Console.WriteLine("Attack: " + breed.attack);
-                Console.WriteLine();
+                    logger.Info("Parent:  " + breed.parent.name);
+                logger.Info("Health: " + breed.health);
+                logger.Info("Attack: " + breed.attack);
+                logger.Info("");
             }
         }
 
