@@ -1,0 +1,42 @@
+[
+    {
+        "ItemName": "Copper Sword",
+        "ItemType": "SWORD",
+        "Melee":{
+            "MinDamage": 1,
+            "MaxDamage": 6
+        }
+    },
+    {
+        "ItemName": "Iron Dagger",
+        "ItemType": "DAGGER",
+        "Melee":{
+            "MinDamage": 1,
+            "MaxDamage": 4
+        }
+    },
+    {
+        "ItemName": "Silver Mace",
+        "ItemType": "HAMMER",
+        "Melee":{
+            "MinDamage": 1,
+            "MaxDamage": 8
+        }
+    },
+    {
+        "ItemName": "Wooden Staff",
+        "ItemType": "STAFF",
+        "Melee":{
+            "MinDamage": 1,
+            "MaxDamage": 6
+        }
+    },
+    {
+        "ItemName": "Short Bow",
+        "ItemType": "BOW",
+        "Range":{
+            "MinDamage": 1,
+            "MaxDamage": 6
+        }
+    }
+]

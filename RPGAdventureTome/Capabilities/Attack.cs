@@ -4,17 +4,15 @@ using System.Text;
 
 namespace RPGAdventureTome.Capabilities
 {
-    public abstract class Attack
+    public class Attack
     {
-        internal int minDamage;
-        internal int maxDamage;
+        public int MinDamage;
+        public int MaxDamage;
 
-        public Attack(int min, int max)
+        public int hit()
         {
-            minDamage = min;
-            maxDamage = max;
+            Random r = new Random();
+            return r.Next(MinDamage, MaxDamage);
         }
-
-        public abstract void hit();
     }
 }

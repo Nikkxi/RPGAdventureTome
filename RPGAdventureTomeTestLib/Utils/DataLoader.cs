@@ -1,4 +1,6 @@
-﻿using RPGAdventureTome.Actors;
+﻿using System;
+using RPGAdventureTome.Actors;
+using RPGAdventureTome.Items;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -8,7 +10,7 @@ namespace RPGAdventureTomeTestLib.Utils
 {
     class DataLoader
     {
-        private readonly string FILE_PATH = "Data/";
+        private readonly string FILE_PATH = "./Data/";
 
         public DataLoader()
         {
@@ -62,6 +64,19 @@ namespace RPGAdventureTomeTestLib.Utils
             }
 
             return breedList;
+        }
+
+        public List<Item> loadWeapons(){
+            List<Item> itemList = new List<Item>();
+
+            itemList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
+
+            foreach(Item item in itemList)
+            {
+                Console.WriteLine(item.ItemName);
+            }
+
+            return itemList;
         }
     }
 }
