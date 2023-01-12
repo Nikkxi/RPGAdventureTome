@@ -1,6 +1,7 @@
 ﻿using System;
 using RPGAdventureTome.Actors;
 using RPGAdventureTome.Items;
+using RPGAdventureTome.Capabilities;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -10,16 +11,19 @@ namespace RPGAdventureTomeTestLib.Utils
 {
     class DataLoader
     {
-        private readonly string FILE_PATH = "./Data/";
+        private readonly string DATA_DIRECTORY   = "./Data/";
+
+        JsonSerializerOptions serializationOptions;
 
         public DataLoader()
         {
-
+            serializationOptions = new JsonSerializerOptions();
+            serializationOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
         }
 
         private string ReadJsonFromFile(string fileName) {
 
-            string jsonData = File.ReadAllText(FILE_PATH + fileName + ".json");
+            string jsonData = File.ReadAllText(DATA_DIRECTORY + fileName + ".json");
 
             return jsonData;
         }
@@ -28,7 +32,7 @@ namespace RPGAdventureTomeTestLib.Utils
         {
             List<Breed> breedList = new List<Breed>();
 
-            JsonDocument monsterBreeds = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("MonsterBreeds"));
+            JsonDocument monsterBreeds = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("MonsterBreeds"), serializationOptions);
 
             var enumerator = monsterBreeds.RootElement.EnumerateArray();
 
@@ -69,11 +73,44 @@ namespace RPGAdventureTomeTestLib.Utils
         public List<Item> loadWeapons(){
             List<Item> itemList = new List<Item>();
 
-            itemList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
+            var items = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Weapons"), serializationOptions);
+            var enumerator = items.RootElement.EnumerateArray();
 
-            foreach(Item item in itemList)
+            foreach(JsonElement item in enumerator)
             {
-                Console.WriteLine(item.ItemName);
+                //Console.WriteLine(item.GetProperty("ItemName").GetString());
+
+                var itemName = item.GetProperty("ItemName").GetString();
+                var itemType = item.GetProperty("ItemType").Deserialize<ItemType>();
+                var melee = item.GetProperty("Melee").Deserialize<Attack>();
+                var range = item.GetProperty("Range").Deserialize<Attack>();
+                var defense = item.GetProperty("Defense").Deserialize<Defense>();
+                var uses = item.GetProperty("Uses").Deserialize<List<Use>>();
+
+                itemList.Add(new Item(itemName, itemType, melee, range, defense, uses));
+            }
+
+            return itemList;
+        }
+
+        public List<Item> loadArmor(){
+            List<Item> itemList = new List<Item>();
+
+            var items = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Armor"), serializationOptions);
+            var enumerator = items.RootElement.EnumerateArray();
+
+            foreach(JsonElement item in enumerator)
+            {
+                //Console.WriteLine(item.GetProperty("ItemName").GetString());
+
+                var itemName = item.GetProperty("ItemName").GetString();
+                var itemType = item.GetProperty("ItemType").Deserialize<ItemType>();
+                var melee = item.GetProperty("Melee").Deserialize<Attack>();
+                var range = item.GetProperty("Range").Deserialize<Attack>();
+                var defense = item.GetProperty("Defense").Deserialize<Defense>();
+                var uses = item.GetProperty("Uses").Deserialize<List<Use>>();
+
+                itemList.Add(new Item(itemName, itemType, melee, range, defense, uses));
             }
 
             return itemList;

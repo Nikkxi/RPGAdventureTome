@@ -5,7 +5,10 @@
         "Melee":{
             "MinDamage": 1,
             "MaxDamage": 6
-        }
+        },
+        "Range": null,
+        "Defense": null,
+        "Uses": []
     },
     {
         "ItemName": "Iron Dagger",
@@ -13,7 +16,10 @@
         "Melee":{
             "MinDamage": 1,
             "MaxDamage": 4
-        }
+        },
+        "Range": null,
+        "Defense": null,
+        "Uses": []
     },
     {
         "ItemName": "Silver Mace",
@@ -21,7 +27,10 @@
         "Melee":{
             "MinDamage": 1,
             "MaxDamage": 8
-        }
+        },
+        "Range": null,
+        "Defense": null,
+        "Uses": []
     },
     {
         "ItemName": "Wooden Staff",
@@ -29,14 +38,20 @@
         "Melee":{
             "MinDamage": 1,
             "MaxDamage": 6
-        }
+        },
+        "Range": null,
+        "Defense": null,
+        "Uses": []
     },
     {
         "ItemName": "Short Bow",
         "ItemType": "BOW",
+        "Melee": null,
         "Range":{
             "MinDamage": 1,
             "MaxDamage": 6
-        }
+        },
+        "Defense": null,
+        "Uses": []
     }
 ]

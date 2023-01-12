@@ -6,7 +6,7 @@ using NLog;
 using NLog.Config;
 using NLog.Targets;
 
-namespace AdventureTomeTestLib
+namespace RPGAdventureTomeTestLib.Tests
 {
     [TestFixture(Author = "SupCMDr", Description = "Actor Creation Tests")]
     class ActorTests

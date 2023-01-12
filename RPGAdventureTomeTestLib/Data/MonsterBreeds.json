@@ -14,8 +14,8 @@
   {
     "parent": "Troll",
     "name": "Troll Archer",
-    "health": 15,
-    "attack": 5
+    "health": 14,
+    "attack": 4
   },
   {
     "parent": "",

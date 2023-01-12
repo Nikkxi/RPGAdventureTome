@@ -1,0 +1,24 @@
+[
+    {
+        "ItemName": "Studded Leather",
+        "ItemType": "ARMOR",
+        "Melee": null,
+        "Range": null,
+        "Defense": {
+            "Armor": 12,
+            "DodgeChance": 75
+        },
+        "Uses": []
+    },
+    {
+        "ItemName": "Bronze Curiass",
+        "ItemType": "ARMOR",
+        "Melee": null,
+        "Range": null,
+        "Defense": {
+            "Armor": 30,
+            "DodgeChance": 25
+        },
+        "Uses": []
+    }
+]

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace RPGAdventureTome.Capabilities
 {
-    public abstract class Defense
+    public class Defense
     {
-        private int armor;
-        private int dodgeBonus;
-        public abstract void Defend();
+        [JsonInclude]
+        public int Armor;
+        [JsonInclude]
+        public int DodgeChance;
     }
 }

@@ -3,6 +3,7 @@ using RPGAdventureTomeTestLib.Utils;
 using RPGAdventureTome.Items;
 using RPGAdventureTome.Capabilities;
 using System.Collections.Generic;
+using System;
 using NUnit.Framework;
 using NLog;
 using NLog.Config;
@@ -48,6 +49,7 @@ namespace RPGAdventureTomeTestLib.Tests
         public void LoadWeaponsTest(){
             List<Item> weaponList = loader.loadWeapons();
             
+            logger.Info("Number of Weapons Loaded: " + weaponList.Count);
             Assert.NotZero(weaponList.Count);
 
             foreach(Item weapon in weaponList)
@@ -61,7 +63,7 @@ namespace RPGAdventureTomeTestLib.Tests
                 Assert.IsNotNull(weapon.ItemType);
                 logger.Info(weapon.ItemType);
 
-                if(weapon.ItemType != ItemType.BOW || weapon.ItemType != ItemType.POTION)
+                if(weapon.ItemType != ItemType.BOW && weapon.ItemType != ItemType.POTION)
                 {
                     Assert.IsNotNull(weapon.Melee);
                     Assert.IsNotNull(weapon.Melee.MinDamage);
@@ -69,7 +71,8 @@ namespace RPGAdventureTomeTestLib.Tests
                     Assert.IsNotNull(weapon.Melee.MaxDamage);
                     logger.Info(weapon.Melee.MaxDamage);
                 }
-                else if(weapon.ItemType == ItemType.BOW)
+                
+                if(weapon.ItemType == ItemType.BOW)
                 {
                     Assert.IsNotNull(weapon.Range);
                     Assert.IsNotNull(weapon.Range.MinDamage);
@@ -77,9 +80,11 @@ namespace RPGAdventureTomeTestLib.Tests
                     Assert.IsNotNull(weapon.Range.MaxDamage);
                     logger.Info(weapon.Range.MaxDamage);
                 }
-                else
-                {
-                    Assert.Fail("Something went wrong with checking the ItemType");
+                
+                if(weapon.ItemType == ItemType.POTION)
+                {  
+                    Console.WriteLine("No weapon should have a POTION item type!");
+                    Assert.Fail("No weapon should have a POTION item type!");
                 }
             }
         }
