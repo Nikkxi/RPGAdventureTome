@@ -17,15 +17,19 @@ namespace RPGAdventureTomeTestLib.Tests
         private DataLoader loader;
         private ILogger logger;
 
-        private LoggingConfiguration config;
-        private FileTarget logfile;
-        private ConsoleTarget logconsole;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             loader = new DataLoader();
             logger = LogManager.GetCurrentClassLogger();
+
+            logger.Log(LogLevel.Info, "=== BEGIN WEAPON LOADER TESTS ===");
+        }
+
+        [OneTimeTearDown]
+        public void TearDown(){
+            logger.Log(LogLevel.Info, "");
         }
 
         [Test]
@@ -41,8 +45,30 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.IsNotNull(newItem.ItemName);
             Assert.IsNotNull(newItem.ItemType);
             Assert.IsNotNull(newItem.Melee);
-            Assert.IsNotNull(newItem.Melee.MinDamage);
-            Assert.IsNotNull(newItem.Melee.MaxDamage);
+            Assert.AreEqual(newItem.Melee.MinDamage, 1);
+            Assert.AreEqual(newItem.Melee.MaxDamage, 4);
+        }
+
+        [Test]
+        public void CreateNewWeapon2(){
+            Item newItem = new Item(
+                "Test Sword 2",
+                ItemType.SWORD,
+                new Attack(){MinDamage=1, MaxDamage=4},
+                new Attack(){MinDamage=0, MaxDamage=0},
+                new Defense(){Armor=0,DodgeChance=0},
+                new List<Use>()
+            );
+
+            Assert.IsNotNull(newItem);
+            Assert.IsNotNull(newItem.ItemName);
+            Assert.IsNotNull(newItem.ItemType);
+            Assert.IsNotNull(newItem.Melee);
+            Assert.IsNotNull(newItem.Range);
+            Assert.IsNotNull(newItem.Defense);
+            Assert.IsEmpty(newItem.Uses);
+            Assert.AreEqual(newItem.Melee.MinDamage, 1);
+            Assert.AreEqual(newItem.Melee.MaxDamage, 4);
         }
 
         [Test(Description="Load Weapons test")]

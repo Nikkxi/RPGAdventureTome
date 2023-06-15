@@ -16,20 +16,25 @@ namespace RPGAdventureTome.Items
         public ItemType ItemType;
         
         [JsonInclude]
-        public Attack? Melee;
+        public Attack Melee;
 
         [JsonInclude]
-        public Attack? Range;
+        public Attack Range;
 
         [JsonInclude]
-        public Defense? Defense;
+        public Defense Defense;
 
         [JsonInclude]
-        public List<Use>? Uses;
+        public List<Use> Uses;
 
-        public Item() : this("", ItemType.NULL, null, null, null, null)
+        public Item()
         {
-            
+            this.ItemName = "";
+            this.ItemType = ItemType.NULL;
+            this.Melee = new Attack();
+            this.Range = new Attack();
+            this.Defense = new Defense();
+            this.Uses = new List<Use>();
         }
         public Item(string itemName, ItemType itemType, Attack melee, Attack range, Defense defense, List<Use> uses)
         {

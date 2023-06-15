@@ -18,11 +18,18 @@ namespace RPGAdventureTomeTestLib.Tests
         private FileTarget logfile;
         private ConsoleTarget logconsole;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             loader = new DataLoader();
             logger = LogManager.GetCurrentClassLogger();
+
+            logger.Log(LogLevel.Info, "=== BEGIN ACTOR LOADER TESTS ===");
+        }
+
+        [OneTimeTearDown]
+        public void TearDown(){
+            logger.Log(LogLevel.Info, "");
         }
 
         [Test]

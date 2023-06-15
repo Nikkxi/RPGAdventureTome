@@ -16,15 +16,19 @@ namespace RPGAdventureTomeTestLib.Tests
         private DataLoader loader;
         private ILogger logger;
 
-        private LoggingConfiguration config;
-        private FileTarget logfile;
-        private ConsoleTarget logconsole;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             loader = new DataLoader();
             logger = LogManager.GetCurrentClassLogger();
+
+            logger.Log(LogLevel.Info, "=== BEGIN ARMOR LOADER TESTS ===");
+        }
+
+        [OneTimeTearDown]
+        public void TearDown(){
+            logger.Log(LogLevel.Info, "");
         }
 
         [Test]
@@ -39,10 +43,35 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.IsNotNull(newItem);
             Assert.IsNotNull(newItem.ItemName);
             Assert.IsNotNull(newItem.ItemType);
-            Assert.IsNull(newItem.Melee);
-            Assert.IsNull(newItem.Range);
+            Assert.IsNotNull(newItem.Melee);
+            Assert.IsNotNull(newItem.Range);
             Assert.IsNotNull(newItem.Defense);
-            Assert.IsNull(newItem.Uses);
+            Assert.IsEmpty(newItem.Uses);
+
+            StringAssert.AreEqualIgnoringCase(newItem.ItemName, "Test Armor");
+            Assert.AreEqual(newItem.ItemType, ItemType.ARMOR);
+            Assert.AreEqual(newItem.Defense.Armor, 12);
+            Assert.AreEqual(newItem.Defense.DodgeChance, 80);
+        }
+
+        [Test]
+        public void CreateNewArmor2(){
+            Item newItem = new Item(
+                "Test Armor 2", 
+                ItemType.ARMOR,
+                new Attack(){MinDamage=1,MaxDamage=6},
+                new Attack(){MinDamage=2,MaxDamage=4},
+                new Defense(){Armor=10,DodgeChance=70},
+                new List<Use>()
+            );
+
+            Assert.IsNotNull(newItem);
+            Assert.IsNotNull(newItem.ItemName);
+            Assert.IsNotNull(newItem.ItemType);
+            Assert.IsNotNull(newItem.Melee);
+            Assert.IsNotNull(newItem.Range);
+            Assert.IsNotNull(newItem.Defense);
+            Assert.IsEmpty(newItem.Uses);
         }
 
         [Test(Description="Load Weapons test")]
