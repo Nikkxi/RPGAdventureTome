@@ -1,43 +1,44 @@
 [
     {
         "ItemName": "Copper Sword",
-        "ItemType": "SWORD",
-        "Melee":{
+        "Description": "A simple sword made of copper.",
+        "Attack":{
             "MinDamage": 1,
-            "MaxDamage": 6
+            "MaxDamage": 6,
+            "Range": 1
         },
-        "Range": null,
         "Defense": null,
         "Uses": []
     },
     {
         "ItemName": "Iron Dagger",
-        "ItemType": "DAGGER",
-        "Melee":{
+        "Description": "A simple dagger made of iron.",
+        "Attack":{
             "MinDamage": 1,
-            "MaxDamage": 4
+            "MaxDamage": 4,
+            "Range": 1
         },
-        "Range": null,
         "Defense": null,
         "Uses": []
     },
     {
         "ItemName": "Silver Mace",
-        "ItemType": "HAMMER",
-        "Melee":{
+        "Description": "A simple mace coated with silver.",
+        "Attack":{
             "MinDamage": 1,
-            "MaxDamage": 8
+            "MaxDamage": 8,
+            "Range": 1
         },
-        "Range": null,
         "Defense": null,
         "Uses": []
     },
     {
         "ItemName": "Wooden Staff",
-        "ItemType": "STAFF",
-        "Melee":{
+        "Description": "A staff carved from the limb of a tree.",
+        "Attack":{
             "MinDamage": 1,
-            "MaxDamage": 6
+            "MaxDamage": 6,
+            "Range": 1
         },
         "Range": null,
         "Defense": null,
@@ -45,11 +46,11 @@
     },
     {
         "ItemName": "Short Bow",
-        "ItemType": "BOW",
-        "Melee": null,
-        "Range":{
+        "Description": "A simple short bow made from the branch of a Yew tree.",
+        "Attack":{
             "MinDamage": 1,
-            "MaxDamage": 6
+            "MaxDamage": 6,
+            "Range": 4
         },
         "Defense": null,
         "Uses": []

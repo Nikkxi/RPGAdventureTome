@@ -1,17 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Spells\" />
-    <Folder Include="Modifiers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Modifiers\" />
-    <None Remove="Modifiers\Prefixes\" />
-    <None Remove="Modifiers\Suffixes\" />
-  </ItemGroup>
 </Project>

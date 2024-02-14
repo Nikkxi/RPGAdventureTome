@@ -1,70 +1,58 @@
-﻿using RPGAdventureTome.Capabilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
+using System.Text.Json;
+
 using RPGAdventureTome.Actors;
+using RPGAdventureTome.Capabilities;
+using RPGAdventureTome.Capabilities.Uses;
 
 namespace RPGAdventureTome.Items
 {
     public class Item
     {
-        [JsonInclude]
         public string ItemName;
-
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public ItemType ItemType;
         
-        [JsonInclude]
-        public Attack Melee;
+        public string Description;
 
-        [JsonInclude]
-        public Attack Range;
+        public Attack? attack;
+        public Defense? defense;
+        public List<Use>? uses;
 
-        [JsonInclude]
-        public Defense Defense;
-
-        [JsonInclude]
-        public List<Use> Uses;
 
         public Item()
         {
             this.ItemName = "";
-            this.ItemType = ItemType.NULL;
-            this.Melee = new Attack();
-            this.Range = new Attack();
-            this.Defense = new Defense();
-            this.Uses = new List<Use>();
+            this.Description = "";
+            this.attack = new Attack();
+            this.defense = new Defense();
+            uses.Add(new NullUse());
         }
-        public Item(string itemName, ItemType itemType, Attack melee, Attack range, Defense defense, List<Use> uses)
+
+        public Item(string name, string description)
         {
-            this.ItemName = itemName;
-            this.ItemType = itemType;
-            this.Melee = melee;
-            this.Range = range;
-            this.Defense = defense;
-            this.Uses = uses;
+            this.ItemName = name;
+            this.Description = description;
+        }
+
+        public Item(string _name, string _desciption, Attack _attack, Defense _defense){
+            this.ItemName = _name;
+            this.Description = _desciption;
+            this.attack = _attack;
+            this.defense = _defense;
+            uses.Add(new NullUse());
         }
 
         public void Print()
         {
             Console.WriteLine("\nItem Name: " + ItemName);
-            Console.WriteLine("ItemType: " + ItemType);
-            if(Melee != null) Console.WriteLine("Melee: " + Melee);
-            if(Range != null) Console.WriteLine("Range: " + Range);
-            if(Defense != null) Console.WriteLine("Defense: " + Defense);
-            if(Uses != null) Console.WriteLine("Uses: " + Uses);
+            Console.WriteLine("Item Description: " + Description);
         }
 
         public override string ToString()
         {
             string str = "";
             str += $"\nItem Name: {ItemName}";
-            str += $"\nItemType: {ItemType}";
-            if(Melee != null) str += $"\nMelee: {Melee.MaxDamage}";
-            if(Range != null) str += $"\nRange: {Range.MaxDamage}";
-            if(Defense != null) str += $"\nDefense: {Defense.Armor}";
-            if(Uses != null) str += "$\nUses: {Uses}";
+            str += $"\nItem Description: {Description}";
 
             return str;
         }

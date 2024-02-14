@@ -1,9 +1,8 @@
 [
     {
         "ItemName": "Studded Leather",
-        "ItemType": "ARMOR",
-        "Melee": null,
-        "Range": null,
+        "Description": "A Simple armor made of leather.  It's adorned with metal rivets.",
+        "Attack": null,
         "Defense": {
             "Armor": 12,
             "DodgeChance": 75
@@ -12,9 +11,8 @@
     },
     {
         "ItemName": "Bronze Curiass",
-        "ItemType": "ARMOR",
-        "Melee": null,
-        "Range": null,
+        "Description": "A simple Cuiriass made of Bronze.",
+        "Attack": null,
         "Defense": {
             "Armor": 30,
             "DodgeChance": 25

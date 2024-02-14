@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace RPGAdventureTome.Items
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum ItemType{
+    public enum WeaponType{
         [EnumMember(Value = "SWORD")]
         SWORD,
         [EnumMember(Value = "DAGGER")]
@@ -15,10 +15,6 @@ namespace RPGAdventureTome.Items
         STAFF,
         [EnumMember(Value = "BOW")]
         BOW,
-        [EnumMember(Value = "ARMOR")]
-        ARMOR,
-        [EnumMember(Value = "POTION")]
-        POTION,
         NULL
     }
 }

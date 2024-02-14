@@ -9,3 +9,15 @@ namespace RPGAdventureTome.Capabilities
         public abstract void use();
     }
 }
+
+
+namespace RPGAdventureTome.Capabilities.Uses
+{
+    public class NullUse : Use
+    {
+        public override void use()
+        {
+            // does nothing
+        }
+    }
+}

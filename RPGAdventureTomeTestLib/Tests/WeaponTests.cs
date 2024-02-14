@@ -1,13 +1,13 @@
-using RPGAdventureTomeTestLib;
-using RPGAdventureTomeTestLib.Utils;
-using RPGAdventureTome.Items;
-using RPGAdventureTome.Capabilities;
-using System.Collections.Generic;
 using System;
-using NUnit.Framework;
+using System.Collections.Generic;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
+using NUnit.Framework;
+using RPGAdventureTome.Capabilities;
+using RPGAdventureTome.Items;
+using RPGAdventureTomeTestLib;
+using RPGAdventureTomeTestLib.Utils;
 
 namespace RPGAdventureTomeTestLib.Tests
 {
@@ -28,90 +28,79 @@ namespace RPGAdventureTomeTestLib.Tests
         }
 
         [OneTimeTearDown]
-        public void TearDown(){
+        public void TearDown()
+        {
             logger.Log(LogLevel.Info, "");
         }
 
         [Test]
-        public void CreateNewWeapon(){
-            Item newItem = new Item();
-            newItem.ItemName = "Test Sword";
-            newItem.ItemType = ItemType.SWORD;
-            newItem.Melee = new Attack();
-            newItem.Melee.MinDamage = 1;
-            newItem.Melee.MaxDamage = 4;
+        public void CreateNewWeapon()
+        {
+            var newItem = new Item();
+            newItem.ItemName = "Test Melee Weapon";
+            newItem.Description = "A simple test melee weapon.";
+            newItem.attack = new Attack();
+            newItem.attack.MinDamage = 1;
+            newItem.attack.MaxDamage = 4;
+            newItem.attack.Range = 1;
 
-            Assert.IsNotNull(newItem);
-            Assert.IsNotNull(newItem.ItemName);
-            Assert.IsNotNull(newItem.ItemType);
-            Assert.IsNotNull(newItem.Melee);
-            Assert.AreEqual(newItem.Melee.MinDamage, 1);
-            Assert.AreEqual(newItem.Melee.MaxDamage, 4);
+            Assert.That(newItem, Is.Not.Null);
+            Assert.That(newItem.Description, Is.Not.Null);
+            Assert.That(newItem.attack, Is.Not.Null);
+            Assert.That(newItem.attack.MinDamage, Is.EqualTo(1));
+            Assert.That(newItem.attack.MaxDamage, Is.EqualTo(4));
+            Assert.That(newItem.attack.Range, Is.EqualTo(1));
+
+            Assert.That(newItem.defense, Is.Null);
+            Assert.That(newItem.uses, Is.Empty);
         }
 
         [Test]
-        public void CreateNewWeapon2(){
-            Item newItem = new Item(
-                "Test Sword 2",
-                ItemType.SWORD,
-                new Attack(){MinDamage=1, MaxDamage=4},
-                new Attack(){MinDamage=0, MaxDamage=0},
-                new Defense(){Armor=0,DodgeChance=0},
-                new List<Use>()
+        public void CreateNewWeapon2()
+        {
+            var newItem = new Item(
+                "Test Ranged Weapon",
+                "A sample test ranged weapon",
+                new Attack() { MinDamage = 1, MaxDamage = 4 , Range = 3},
+                new Defense() { Armor = 0, DodgeChance = 0 }
             );
 
-            Assert.IsNotNull(newItem);
-            Assert.IsNotNull(newItem.ItemName);
-            Assert.IsNotNull(newItem.ItemType);
-            Assert.IsNotNull(newItem.Melee);
-            Assert.IsNotNull(newItem.Range);
-            Assert.IsNotNull(newItem.Defense);
-            Assert.IsEmpty(newItem.Uses);
-            Assert.AreEqual(newItem.Melee.MinDamage, 1);
-            Assert.AreEqual(newItem.Melee.MaxDamage, 4);
+            Assert.That(newItem, Is.Not.Null);
+            Assert.That(newItem.ItemName, Is.Not.Null);
+            Assert.That(newItem.Description, Is.Not.Null);
+            Assert.That(newItem.attack, Is.Not.Null);
+            Assert.That(newItem.defense, Is.Not.Null);
+            Assert.That(newItem.uses, Is.Empty);
+            Assert.That(newItem.attack.MinDamage, Is.EqualTo(1));
+            Assert.That(newItem.attack.MaxDamage, Is.EqualTo(4));
+            Assert.That(newItem.attack.Range, Is.EqualTo(3));
         }
 
-        [Test(Description="Load Weapons test")]
-        public void LoadWeaponsTest(){
+        [Test(Description = "Load Weapons test")]
+        public void LoadWeaponsTest()
+        {
             List<Item> weaponList = loader.loadWeapons();
-            
-            logger.Info("Number of Weapons Loaded: " + weaponList.Count);
-            Assert.NotZero(weaponList.Count);
 
-            foreach(Item weapon in weaponList)
+            logger.Info("Number of Weapons Loaded: " + weaponList.Count);
+            Assert.That(weaponList.Count, Is.Positive);
+
+            foreach (Item weapon in weaponList)
             {
                 logger.Info("======================");
-                Assert.IsNotNull(weapon);
+                Assert.That(weapon, Is.Not.Null);
 
-                Assert.IsNotNull(weapon.ItemName);
+                Assert.That(weapon.ItemName, Is.Not.Null);
                 logger.Info(weapon.ItemName);
 
-                Assert.IsNotNull(weapon.ItemType);
-                logger.Info(weapon.ItemType);
+                Assert.That(weapon.Description, Is.Not.Null);
+                logger.Info(weapon.Description);
 
-                if(weapon.ItemType != ItemType.BOW && weapon.ItemType != ItemType.POTION)
-                {
-                    Assert.IsNotNull(weapon.Melee);
-                    Assert.IsNotNull(weapon.Melee.MinDamage);
-                    logger.Info(weapon.Melee.MinDamage);
-                    Assert.IsNotNull(weapon.Melee.MaxDamage);
-                    logger.Info(weapon.Melee.MaxDamage);
-                }
-                
-                if(weapon.ItemType == ItemType.BOW)
-                {
-                    Assert.IsNotNull(weapon.Range);
-                    Assert.IsNotNull(weapon.Range.MinDamage);
-                    logger.Info(weapon.Range.MinDamage);
-                    Assert.IsNotNull(weapon.Range.MaxDamage);
-                    logger.Info(weapon.Range.MaxDamage);
-                }
-                
-                if(weapon.ItemType == ItemType.POTION)
-                {  
-                    Console.WriteLine("No weapon should have a POTION item type!");
-                    Assert.Fail("No weapon should have a POTION item type!");
-                }
+                Assert.That(weapon.attack, Is.Not.Null);
+                Assert.That(weapon.attack.MinDamage, Is.Positive);
+                logger.Info(weapon.attack.MinDamage);
+                Assert.That(weapon.attack.MaxDamage, Is.Positive);
+                logger.Info(weapon.attack.MaxDamage);
+
             }
         }
     }

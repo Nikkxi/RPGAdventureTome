@@ -1,54 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RPGAdventureTome.Capabilities;
 
 namespace RPGAdventureTome.Actors
 {
     public class Monster : Actor
     {
-        public Breed breed;
+        private Breed breed;
+        private Health health;
 
-        private int maxHealth;
-        private int currentHealth;
-
-        private bool isAlive = true;
-
-        internal Monster(Breed breed)
+        public Monster(Breed breed)
         {
             this.breed = breed;
-            maxHealth = breed.health;
+            this.health = new Health(breed.health);
+            health.RegisterObserver(this);
         }
 
-        public String Name()
+        public string GetName()
         {
             return breed.name;
         }
 
-        public int getAttack()
+        public override void takeDamage(int damage)
         {
-            return breed.attack;
+            health.takeDamage(damage);
         }
 
-        public void takeDamage(int damage)
+        public void heal(int healing)
         {
-            currentHealth -= damage;
-
-            if(currentHealth <= 0)
-            {
-                isAlive = false;
-            }
+            health.receiveHealing(healing);
         }
 
-        public void heal(int healthToAdd)
-        {
-            currentHealth += healthToAdd;
-            
-            if(currentHealth > maxHealth)
-            {
-                currentHealth = maxHealth;
-            }
-        }
+        public override void OnDeath(){
+            var a = 1;
+        }        
     }
 }

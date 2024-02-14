@@ -1,4 +1,6 @@
-﻿namespace RPGAdventureTome.Actors
+﻿using RPGAdventureTome.Capabilities;
+
+namespace RPGAdventureTome.Actors
 {
     public class Breed
     {
@@ -30,6 +32,12 @@
             this.attack = attack;
         }
 
-        public Monster newMonster() => new Monster(this);
+        public Monster newMonster(){
+            return new Monster(this);
+        }
+
+        public string GetName(){
+            return name;
+        }
     }
 }

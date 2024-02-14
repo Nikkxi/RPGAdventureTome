@@ -71,49 +71,14 @@ namespace RPGAdventureTomeTestLib.Utils
         }
 
         public List<Item> loadWeapons(){
-            List<Item> itemList = new List<Item>();
+            List<Item> weaponList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
 
-            var items = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Weapons"), serializationOptions);
-            var enumerator = items.RootElement.EnumerateArray();
-
-            foreach(JsonElement item in enumerator)
-            {
-                //Console.WriteLine(item.GetProperty("ItemName").GetString());
-
-                var itemName = item.GetProperty("ItemName").GetString();
-                var itemType = item.GetProperty("ItemType").Deserialize<ItemType>();
-                var melee = item.GetProperty("Melee").Deserialize<Attack>();
-                var range = item.GetProperty("Range").Deserialize<Attack>();
-                var defense = item.GetProperty("Defense").Deserialize<Defense>();
-                var uses = item.GetProperty("Uses").Deserialize<List<Use>>();
-
-                itemList.Add(new Item(itemName, itemType, melee, range, defense, uses));
-            }
-
-            return itemList;
+            return weaponList;
         }
 
         public List<Item> loadArmor(){
-            List<Item> itemList = new List<Item>();
-
-            var items = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Armor"), serializationOptions);
-            var enumerator = items.RootElement.EnumerateArray();
-
-            foreach(JsonElement item in enumerator)
-            {
-                //Console.WriteLine(item.GetProperty("ItemName").GetString());
-
-                var itemName = item.GetProperty("ItemName").GetString();
-                var itemType = item.GetProperty("ItemType").Deserialize<ItemType>();
-                var melee = item.GetProperty("Melee").Deserialize<Attack>();
-                var range = item.GetProperty("Range").Deserialize<Attack>();
-                var defense = item.GetProperty("Defense").Deserialize<Defense>();
-                var uses = item.GetProperty("Uses").Deserialize<List<Use>>();
-
-                itemList.Add(new Item(itemName, itemType, melee, range, defense, uses));
-            }
-
-            return itemList;
+            List<Item> armorList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Armor"));
+            return armorList;
         }
     }
 }

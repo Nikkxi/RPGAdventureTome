@@ -7,9 +7,9 @@ namespace RPGAdventureTome.Capabilities
 {
     public class Defense
     {
-        [JsonInclude]
+        
         public int Armor;
-        [JsonInclude]
+        
         public int DodgeChance;
     }
 }
