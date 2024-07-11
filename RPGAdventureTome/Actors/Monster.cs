@@ -11,7 +11,7 @@ namespace RPGAdventureTome.Actors
         {
             this.breed = breed;
             this.health = new Health(breed.health);
-            health.RegisterObserver(this);
+            this.health.RegisterObserver(this);
         }
 
         public string GetName()

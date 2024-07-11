@@ -10,36 +10,42 @@ namespace RPGAdventureTome.Items
 {
     public class Item
     {
-        public string ItemName;
-        
-        public string Description;
-
-        public Attack? attack;
-        public Defense? defense;
-        public List<Use>? uses;
+        public string ItemName {get;set;}
+        public string Description {get;set;}
+        public Attack? Attack {get;set;}
+        public Defense? Defense {get;set;}
+        public List<Use?> Uses {get;set;}
 
 
         public Item()
         {
             this.ItemName = "";
             this.Description = "";
-            this.attack = new Attack();
-            this.defense = new Defense();
-            uses.Add(new NullUse());
+            this.Uses = new List<Use?>();
         }
 
         public Item(string name, string description)
         {
             this.ItemName = name;
             this.Description = description;
+            this.Uses = new List<Use>();
         }
 
         public Item(string _name, string _desciption, Attack _attack, Defense _defense){
             this.ItemName = _name;
             this.Description = _desciption;
-            this.attack = _attack;
-            this.defense = _defense;
-            uses.Add(new NullUse());
+            this.Attack = _attack;
+            this.Defense = _defense;
+            Uses = new List<Use>();
+        }
+
+        public Item(string _name, string _desciption, Attack _attack, Defense _defense, List<Use> _uses){
+            this.ItemName = _name;
+            this.Description = _desciption;
+            this.Attack = _attack;
+            this.Defense = _defense;
+            Uses = new List<Use?>();
+            Uses = _uses;
         }
 
         public void Print()

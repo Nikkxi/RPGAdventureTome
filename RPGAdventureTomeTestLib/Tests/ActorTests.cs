@@ -11,7 +11,7 @@ namespace RPGAdventureTomeTestLib.Tests
     [TestFixture(Author = "SupCMDr", Description = "Actor Creation Tests")]
     class ActorTests
     {
-        private DataLoader loader;
+        private DataHandler loader;
         private ILogger logger;
 
         private LoggingConfiguration config;
@@ -21,7 +21,7 @@ namespace RPGAdventureTomeTestLib.Tests
         [OneTimeSetUp]
         public void Setup()
         {
-            loader = new DataLoader();
+            loader = new DataHandler();
             logger = LogManager.GetCurrentClassLogger();
 
             logger.Log(LogLevel.Info, "=== BEGIN ACTOR LOADER TESTS ===");
@@ -69,6 +69,7 @@ namespace RPGAdventureTomeTestLib.Tests
             logger.Info("TEST: " + TestContext.CurrentContext.Test.Name);
             List<Breed> breeds = loader.LoadMonsterBreeds();
             Assert.That(breeds, Is.Not.Empty);
+            logger.Info("Breeds count: " + breeds.Count);
 
             List<Monster> clones = new List<Monster>();
             Assert.That(clones, Is.Empty);

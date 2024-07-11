@@ -5,11 +5,11 @@ using System.Text.Json.Serialization;
 
 namespace RPGAdventureTome.Capabilities
 {
+
     public class Defense
     {
         
-        public int Armor;
-        
-        public int DodgeChance;
+        public int Armor {get;set;}
+        public int DodgeChance {get;set;}
     }
 }

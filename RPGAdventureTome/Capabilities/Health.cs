@@ -14,6 +14,7 @@ namespace RPGAdventureTome.Capabilities
         {
             this.maxHealth = maxHealth;
             this.currentHealth = maxHealth;
+            observers = new List<Actor>();
         }
 
         /// Some Documentation here

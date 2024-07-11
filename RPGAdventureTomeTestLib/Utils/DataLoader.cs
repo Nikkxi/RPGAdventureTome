@@ -6,19 +6,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using NLog;
 
 namespace RPGAdventureTomeTestLib.Utils
 {
-    class DataLoader
+    class DataHandler
     {
         private readonly string DATA_DIRECTORY   = "./Data/";
 
         JsonSerializerOptions serializationOptions;
+        private ILogger logger;
 
-        public DataLoader()
+        public DataHandler()
         {
             serializationOptions = new JsonSerializerOptions();
             serializationOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private string ReadJsonFromFile(string fileName) {
@@ -71,13 +74,18 @@ namespace RPGAdventureTomeTestLib.Utils
         }
 
         public List<Item> loadWeapons(){
-            List<Item> weaponList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
+            var weaponList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
+            logger.Info(weaponList.Count);
+            logger.Info(weaponList[0].ItemName);
 
+            //JsonDocument weapons = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Weapons"), serializationOptions);
             return weaponList;
         }
 
         public List<Item> loadArmor(){
-            List<Item> armorList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Armor"));
+            var armorList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Armor"));
+
+            //JsonDocument armors = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Armor"), serializationOptions);
             return armorList;
         }
     }

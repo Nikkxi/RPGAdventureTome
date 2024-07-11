@@ -14,14 +14,14 @@ namespace RPGAdventureTomeTestLib.Tests
     [TestFixture(Author = "SupCMDr", Description = "Weapon Data Loading Tests")]
     public class WeaponTests
     {
-        private DataLoader loader;
+        private DataHandler loader;
         private ILogger logger;
 
 
         [OneTimeSetUp]
         public void Setup()
         {
-            loader = new DataLoader();
+            loader = new DataHandler();
             logger = LogManager.GetCurrentClassLogger();
 
             logger.Log(LogLevel.Info, "=== BEGIN WEAPON LOADER TESTS ===");
@@ -39,20 +39,20 @@ namespace RPGAdventureTomeTestLib.Tests
             var newItem = new Item();
             newItem.ItemName = "Test Melee Weapon";
             newItem.Description = "A simple test melee weapon.";
-            newItem.attack = new Attack();
-            newItem.attack.MinDamage = 1;
-            newItem.attack.MaxDamage = 4;
-            newItem.attack.Range = 1;
+            newItem.Attack = new Attack();
+            newItem.Attack.MinDamage = 1;
+            newItem.Attack.MaxDamage = 4;
+            newItem.Attack.Range = 1;
 
             Assert.That(newItem, Is.Not.Null);
             Assert.That(newItem.Description, Is.Not.Null);
-            Assert.That(newItem.attack, Is.Not.Null);
-            Assert.That(newItem.attack.MinDamage, Is.EqualTo(1));
-            Assert.That(newItem.attack.MaxDamage, Is.EqualTo(4));
-            Assert.That(newItem.attack.Range, Is.EqualTo(1));
+            Assert.That(newItem.Attack, Is.Not.Null);
+            Assert.That(newItem.Attack.MinDamage, Is.EqualTo(1));
+            Assert.That(newItem.Attack.MaxDamage, Is.EqualTo(4));
+            Assert.That(newItem.Attack.Range, Is.EqualTo(1));
 
-            Assert.That(newItem.defense, Is.Null);
-            Assert.That(newItem.uses, Is.Empty);
+            Assert.That(newItem.Defense, Is.Null);
+            Assert.That(newItem.Uses, Is.Empty);
         }
 
         [Test]
@@ -68,12 +68,12 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.That(newItem, Is.Not.Null);
             Assert.That(newItem.ItemName, Is.Not.Null);
             Assert.That(newItem.Description, Is.Not.Null);
-            Assert.That(newItem.attack, Is.Not.Null);
-            Assert.That(newItem.defense, Is.Not.Null);
-            Assert.That(newItem.uses, Is.Empty);
-            Assert.That(newItem.attack.MinDamage, Is.EqualTo(1));
-            Assert.That(newItem.attack.MaxDamage, Is.EqualTo(4));
-            Assert.That(newItem.attack.Range, Is.EqualTo(3));
+            Assert.That(newItem.Attack, Is.Not.Null);
+            Assert.That(newItem.Defense, Is.Not.Null);
+            Assert.That(newItem.Uses, Is.Empty);
+            Assert.That(newItem.Attack.MinDamage, Is.EqualTo(1));
+            Assert.That(newItem.Attack.MaxDamage, Is.EqualTo(4));
+            Assert.That(newItem.Attack.Range, Is.EqualTo(3));
         }
 
         [Test(Description = "Load Weapons test")]
@@ -95,11 +95,11 @@ namespace RPGAdventureTomeTestLib.Tests
                 Assert.That(weapon.Description, Is.Not.Null);
                 logger.Info(weapon.Description);
 
-                Assert.That(weapon.attack, Is.Not.Null);
-                Assert.That(weapon.attack.MinDamage, Is.Positive);
-                logger.Info(weapon.attack.MinDamage);
-                Assert.That(weapon.attack.MaxDamage, Is.Positive);
-                logger.Info(weapon.attack.MaxDamage);
+                Assert.That(weapon.Attack, Is.Not.Null);
+                Assert.That(weapon.Attack.MinDamage, Is.Positive);
+                logger.Info(weapon.Attack.MinDamage);
+                Assert.That(weapon.Attack.MaxDamage, Is.Positive);
+                logger.Info(weapon.Attack.MaxDamage);
 
             }
         }
