@@ -58,7 +58,8 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.That(newItem.ItemName, Is.Not.Null);
             Assert.That(newItem.Attack, Is.Not.Null);
             Assert.That(newItem.Defense, Is.Not.Null);
-            Assert.That(newItem.Uses, Is.Not.Empty);
+            Assert.That(newItem.Uses, Is.Not.Null);
+            Assert.That(newItem.Uses, Is.Empty);
         }
 
         [Test(Description="Load Weapons test")]

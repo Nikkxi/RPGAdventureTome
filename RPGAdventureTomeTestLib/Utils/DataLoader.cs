@@ -74,19 +74,11 @@ namespace RPGAdventureTomeTestLib.Utils
         }
 
         public List<Item> loadWeapons(){
-            var weaponList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
-            logger.Info(weaponList.Count);
-            logger.Info(weaponList[0].ItemName);
-
-            //JsonDocument weapons = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Weapons"), serializationOptions);
-            return weaponList;
+            return JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
         }
 
         public List<Item> loadArmor(){
-            var armorList = JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Armor"));
-
-            //JsonDocument armors = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Armor"), serializationOptions);
-            return armorList;
+            return JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Armor"));
         }
     }
 }
