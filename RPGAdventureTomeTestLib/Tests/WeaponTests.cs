@@ -52,7 +52,7 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.That(newItem.Attack.Range, Is.EqualTo(1));
 
             Assert.That(newItem.Defense, Is.Null);
-            Assert.That(newItem.Uses, Is.Empty);
+            Assert.That(newItem.Usables, Is.Empty);
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.That(newItem.Description, Is.Not.Null);
             Assert.That(newItem.Attack, Is.Not.Null);
             Assert.That(newItem.Defense, Is.Not.Null);
-            Assert.That(newItem.Uses, Is.Empty);
+            Assert.That(newItem.Usables, Is.Empty);
             Assert.That(newItem.Attack.MinDamage, Is.EqualTo(1));
             Assert.That(newItem.Attack.MaxDamage, Is.EqualTo(4));
             Assert.That(newItem.Attack.Range, Is.EqualTo(3));

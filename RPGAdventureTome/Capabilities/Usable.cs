@@ -4,16 +4,16 @@ using System.Text;
 
 namespace RPGAdventureTome.Capabilities
 {
-    public abstract class Use
+    public abstract class Usable
     {
         public abstract void use();
     }
 }
 
 
-namespace RPGAdventureTome.Capabilities.Uses
+namespace RPGAdventureTome.Capabilities.Usables
 {
-    public class NullUse : Use
+    public class NullUse : Usable
     {
         public override void use()
         {

@@ -12,11 +12,7 @@ namespace RPGAdventureTomeTestLib.Tests
     class ActorTests
     {
         private DataHandler loader;
-        private ILogger logger;
-
-        private LoggingConfiguration config;
-        private FileTarget logfile;
-        private ConsoleTarget logconsole;
+        private Logger logger;
 
         [OneTimeSetUp]
         public void Setup()

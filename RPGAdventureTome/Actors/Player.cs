@@ -24,7 +24,6 @@ namespace RPGAdventureTome.Actors
 
         public override void OnDeath(){
             // game over trigger
-            var a = 1;
         }
     }
 }

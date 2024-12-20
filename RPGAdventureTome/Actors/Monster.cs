@@ -30,7 +30,7 @@ namespace RPGAdventureTome.Actors
         }
 
         public override void OnDeath(){
-            var a = 1;
+            // on death trigger
         }        
     }
 }
