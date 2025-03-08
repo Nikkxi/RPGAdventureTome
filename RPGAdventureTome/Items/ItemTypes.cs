@@ -1,8 +1,18 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace RPGAdventureTome.Items
+namespace RPGAdventureTome.Items.Types
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum ItemType{
+        [EnumMember(Value = "WEAPON")]
+        WEAPON,
+        [EnumMember(Value = "ARMOR")]
+        ARMOR,
+        [EnumMember(Value = "ACCESSORY")]
+        ACCESSORY
+    }
+
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum WeaponType{
         [EnumMember(Value = "SWORD")]

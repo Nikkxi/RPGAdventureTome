@@ -37,6 +37,9 @@ namespace RPGAdventureTomeTestLib.Utils
 
             JsonDocument monsterBreeds = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("MonsterBreeds"), serializationOptions);
 
+            if (monsterBreeds == null)
+                return breedList;
+            
             var enumerator = monsterBreeds.RootElement.EnumerateArray();
 
             // iterate through to create base monster type

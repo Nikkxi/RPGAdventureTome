@@ -80,6 +80,7 @@ namespace RPGAdventureTomeTestLib.Tests
                 Assert.That(armor.Description, Is.Not.Null);
                 logger.Info("Description: " + armor.Description);
 
+                Assert.That(armor.Defense, Is.Not.Null);
                 logger.Info("Armor: " + armor.Defense.Armor);
                 //Assert.That(armor.Defense.DodgeChance, Is.Not.EqualTo(0));
                 logger.Info("Dodge Chance: " + armor.Defense.DodgeChance);

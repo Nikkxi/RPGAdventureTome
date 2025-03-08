@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
+    <LangVersion>default</LangVersion>
+    <Nullable>warnings</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

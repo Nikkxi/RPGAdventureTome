@@ -1,4 +1,5 @@
 using RPGAdventureTome.Capabilities;
+using RPGAdventureTome.Items.Types;
 
 namespace RPGAdventureTome.Items
 {

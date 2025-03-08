@@ -67,21 +67,23 @@ namespace RPGAdventureTomeTestLib.Tests
             Assert.That(breeds, Is.Not.Empty);
             logger.Info("Breeds count: " + breeds.Count);
 
-            List<Monster> clones = new List<Monster>();
-            Assert.That(clones, Is.Empty);
-            logger.Info("Clones count: " + clones.Count);
+            List<Monster> monsters = new List<Monster>();
+            Assert.That(monsters, Is.Empty);
+            logger.Info("Monsters count: " + monsters.Count);
 
             foreach(Breed breed in breeds)
             {
-                logger.Info("Breed: " + breed.GetName());
+                //logger.Info("Breed: " + breed.GetName());
                 var monster = breed.newMonster();
                 Assert.That(monster, Is.Not.Null);
-                //clones.Add(breed.newMonster());
-                //logger.Info("Clones count: " + clones.Count);
+                monsters.Add(breed.newMonster());
+                logger.Info("Monster cloned: " + monster.GetName());
             }
+            
+            logger.Info("Monster count: " + monsters.Count);
 
             int index = 0;
-            foreach(Monster clone in clones)
+            foreach(Monster clone in monsters)
             {
                 Assert.That(clone.GetName(), Is.EqualTo(breeds[index].GetName()));
                 index++;
