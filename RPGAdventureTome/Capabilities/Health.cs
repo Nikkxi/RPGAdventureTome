@@ -18,7 +18,7 @@ namespace RPGAdventureTome.Capabilities
         }
 
         /// Some Documentation here
-        public void takeDamage(int damage){
+        public void TakeDamage(int damage){
             currentHealth -= damage;
 
             if (currentHealth <= 0)

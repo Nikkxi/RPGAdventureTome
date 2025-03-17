@@ -9,7 +9,7 @@ namespace RPGAdventureTome.Capabilities
     public class Defense
     {
         
-        public int Armor {get;set;}
-        public int DodgeChance {get;set;}
+        public int armor {get;set;}
+        public int dodgeChance {get;set;}
     }
 }

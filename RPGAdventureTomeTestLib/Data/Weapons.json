@@ -1,63 +1,62 @@
 [
   {
-    "ItemName": "Copper Sword",
-    "Description": "A simple sword made of copper.",
-    "Attack": {
-      "MinDamage": 1,
-      "MaxDamage": 6,
-      "Range": 1,
-      "OnHitEffects": null
+    "name": "Copper Sword",
+    "description": "A simple sword made of copper.",
+    "weaponType": "SWORD",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 6,
+      "range": 1
     },
-    "Defense": null,
-    "Uses": []
+    "defense": null,
+    "usables": []
   },
   {
-    "ItemName": "Iron Dagger",
-    "Description": "A simple dagger made of iron.",
-    "Attack": {
-      "MinDamage": 1,
-      "MaxDamage": 4,
-      "Range": 1,
-      "OnHitEffects": null
+    "name": "Iron Dagger",
+    "description": "A simple dagger made of iron.",
+    "weaponType": "DAGGER",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 4,
+      "range": 1
     },
-    "Defense": null,
-    "Uses": []
+    "defense": null,
+    "usables": []
   },
   {
-    "ItemName": "Silver Mace",
-    "Description": "A simple mace coated with silver.",
-    "Attack": {
-      "MinDamage": 1,
-      "MaxDamage": 8,
-      "Range": 1,
-      "OnHitEffects": null
+    "name": "Silver Mace",
+    "description": "A simple mace coated with silver.",
+    "weaponType": "HAMMER",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 8,
+      "range": 1
     },
-    "Defense": null,
-    "Uses": []
+    "defense": null,
+    "usables": []
   },
   {
-    "ItemName": "Wooden Staff",
-    "Description": "A staff carved from the limb of a tree.",
-    "Attack": {
-      "MinDamage": 1,
-      "MaxDamage": 6,
-      "Range": 1,
-      "OnHitEffects": null
+    "name": "Wooden Staff",
+    "description": "A staff carved from the limb of a tree.",
+    "weaponType": "STAFF",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 6,
+      "range": 1
     },
-    "Range": null,
-    "Defense": null,
-    "Uses": []
+    "defense": null,
+    "usables": []
   },
   {
-    "ItemName": "Short Bow",
-    "Description": "A simple short bow made from the branch of a Yew tree.",
-    "Attack": {
-      "MinDamage": 1,
-      "MaxDamage": 6,
-      "Range": 4,
-      "OnHitEffects": null
+    "name": "Short Bow",
+    "description": "A simple short bow made from the branch of a Yew tree.",
+    "weaponType": "BOW",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 6,
+      "range": 4
     },
-    "Defense": null,
-    "Uses": []
+    "defense": null,
+    "usables": []
   }
 ]

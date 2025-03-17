@@ -18,8 +18,8 @@ namespace RPGAdventureTome.Actors
             health.RegisterObserver(this);
         }
 
-        public override void takeDamage(int damage){
-            health.takeDamage(damage);
+        public override void TakeDamage(int damage){
+            health.TakeDamage(damage);
         }
 
         public override void OnDeath(){

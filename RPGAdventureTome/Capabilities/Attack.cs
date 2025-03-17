@@ -11,41 +11,28 @@ namespace RPGAdventureTome.Capabilities
     public class Attack
     {
 
-        public int MinDamage {get;set;}
-        public int MaxDamage {get;set;}
-        public int Range {get;set;} // from 0-n tile range
+        public int minDamage {get;set;}
+        public int maxDamage {get;set;}
+        public int range {get;set;} // from 0-n tile range
 
-        #nullable enable
-        public List<Effect?> OnHitEffects {get;set;}
 
         public Attack(){
             // Default Null option
-            MinDamage = 0;
-            MaxDamage = 0;
-            Range = 0;
-            OnHitEffects = new List<Effect?>();
-            OnHitEffects.Add(new NoEffect());
+            minDamage = 0;
+            maxDamage = 0;
+            range = 0;
         }
 
         public Attack(int MinDamage, int MaxDamage, int Range){
-            this.MinDamage = MinDamage;
-            this.MaxDamage = MaxDamage;
-            this.Range = Range;
-            OnHitEffects = new List<Effect?>();
-            OnHitEffects.Add(new NoEffect());
+            this.minDamage = MinDamage;
+            this.maxDamage = MaxDamage;
+            this.range = Range;
         }
 
-        public Attack(int MinDamage, int MaxDamage, int Range, List<Effect?> OnHitEffects){
-            this.MinDamage = MinDamage;
-            this.MaxDamage = MaxDamage;
-            this.Range = Range;
-            this.OnHitEffects = OnHitEffects;
-        }
-
-        public void perform(Actor target){
+        public void Perform(Actor target){
             Random r = new Random();
-            int damage = r.Next(MinDamage, MaxDamage);
-            target.takeDamage(damage);
+            int damage = r.Next(minDamage, maxDamage);
+            target.TakeDamage(damage);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using NLog;
+using RPGAdventureTome.Items.Equipment;
 
 namespace RPGAdventureTomeTestLib.Utils
 {
@@ -76,12 +77,12 @@ namespace RPGAdventureTomeTestLib.Utils
             return breedList;
         }
 
-        public List<Item> loadWeapons(){
-            return JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Weapons"));
+        public List<Weapon> LoadWeapons(){
+            return JsonSerializer.Deserialize<List<Weapon>>(ReadJsonFromFile("Weapons"));
         }
 
-        public List<Item> loadArmor(){
-            return JsonSerializer.Deserialize<List<Item>>(ReadJsonFromFile("Armor"));
+        public List<Armor> LoadArmor(){
+            return JsonSerializer.Deserialize<List<Armor>>(ReadJsonFromFile("Armor"));
         }
     }
 }

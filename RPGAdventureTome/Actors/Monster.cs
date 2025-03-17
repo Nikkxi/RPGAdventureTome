@@ -4,7 +4,7 @@ namespace RPGAdventureTome.Actors
 {
     public class Monster : Actor
     {
-        private Breed breed;
+        readonly Breed breed;
         private Health health;
 
         public Monster(Breed breed)
@@ -19,12 +19,12 @@ namespace RPGAdventureTome.Actors
             return breed.name;
         }
 
-        public override void takeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
-            health.takeDamage(damage);
+            health.TakeDamage(damage);
         }
 
-        public void heal(int healing)
+        public void Heal(int healing)
         {
             health.receiveHealing(healing);
         }

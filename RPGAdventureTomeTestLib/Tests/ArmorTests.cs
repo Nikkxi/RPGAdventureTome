@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 using NLog;
-using NLog.Config;
-using NLog.Targets;
 
-using RPGAdventureTomeTestLib;
 using RPGAdventureTomeTestLib.Utils;
-using RPGAdventureTome.Items;
+using RPGAdventureTome.Items.Equipment;
 using RPGAdventureTome.Capabilities;
+using RPGAdventureTome.Items;
 
 namespace RPGAdventureTomeTestLib.Tests
 {
@@ -36,54 +34,55 @@ namespace RPGAdventureTomeTestLib.Tests
 
         [Test]
         public void CreateNewArmor(){
-            var newItem = new Item();
-            newItem.ItemName = "Test Armor";
-            newItem.Description = "Test Armor Descriptions";
+            string Name = "Test Armor";
+            string Description = "Test Armor Descriptions";
+            
+            var newItem = new Armor(Name, Description);
 
             Assert.That(newItem, Is.Not.Null);
-            Assert.That(newItem.ItemName, Is.Not.Null);
-            Assert.That(newItem.Description, Is.Not.Null);
+            Assert.That(newItem.name, Is.Not.Null);
+            Assert.That(newItem.description, Is.Not.Null);
         }
 
         [Test]
         public void CreateNewArmor2(){
-            var newItem = new Item(
+            var newItem = new Armor(
                 "Spiked Shield",
-                "A round shield with spikes on the front.",
-                new Attack(){MinDamage=1,MaxDamage=6,Range=1},
-                new Defense(){Armor=10,DodgeChance=70}
+                "A round shield with spikes on the front."
             );
+            newItem.AddAttack(new Attack(){minDamage=1,maxDamage=6,range=1});
+            newItem.AddDefense(new Defense(){armor=10,dodgeChance=70});
 
             Assert.That(newItem, Is.Not.Null);
-            Assert.That(newItem.ItemName, Is.Not.Null);
-            Assert.That(newItem.Attack, Is.Not.Null);
-            Assert.That(newItem.Defense, Is.Not.Null);
-            Assert.That(newItem.Usables, Is.Not.Null);
-            Assert.That(newItem.Usables, Is.Empty);
+            Assert.That(newItem.name, Is.Not.Null);
+            Assert.That(newItem.attack, Is.Not.Null);
+            Assert.That(newItem.defense, Is.Not.Null);
+            Assert.That(newItem.usables, Is.Not.Null);
+            Assert.That(newItem.usables, Is.Empty);
         }
 
         [Test(Description="Load Weapons test")]
         public void LoadArmorTest(){
-            List<Item> armorList = loader.loadArmor();
+            List<Armor> armorList = loader.LoadArmor();
 
             logger.Info("Number of Armors Loaded: " + armorList.Count);
             Assert.That(armorList.Count, Is.Positive);
 
-            foreach(Item armor in armorList)
+            foreach(Equipment armor in armorList)
             {
                 logger.Info("======================");
                 Assert.That(armor, Is.Not.Null);
 
-                Assert.That(armor.ItemName, Is.Not.Null);
-                logger.Info("Name: " + armor.ItemName);
+                Assert.That(armor.name, Is.Not.Null);
+                logger.Info("name: " + armor.name);
 
-                Assert.That(armor.Description, Is.Not.Null);
-                logger.Info("Description: " + armor.Description);
+                Assert.That(armor.description, Is.Not.Null);
+                logger.Info("Description: " + armor.description);
 
-                Assert.That(armor.Defense, Is.Not.Null);
-                logger.Info("Armor: " + armor.Defense.Armor);
+                Assert.That(armor.defense, Is.Not.Null);
+                logger.Info("Armor: " + armor.defense.armor);
                 //Assert.That(armor.Defense.DodgeChance, Is.Not.EqualTo(0));
-                logger.Info("Dodge Chance: " + armor.Defense.DodgeChance);
+                logger.Info("Dodge Chance: " + armor.defense.dodgeChance);
             }
         }
     }
