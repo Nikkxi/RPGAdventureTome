@@ -8,38 +8,24 @@ namespace RPGAdventureTome.Capabilities
     {
         private int maxHealth;
         private int currentHealth;
-        private List<Actor> observers;
 
         public Health(int maxHealth)
         {
             this.maxHealth = maxHealth;
             this.currentHealth = maxHealth;
-            observers = new List<Actor>();
+        }
+
+        public int getCurrentHealth()
+        {
+            return currentHealth;
         }
 
         /// Some Documentation here
-        public void TakeDamage(int damage){
-            currentHealth -= damage;
-
-            if (currentHealth <= 0)
-                onDeath();
-        }
-
-        public void receiveHealing(int health){
-            currentHealth += health;
-
+        public void UpdateHealth(int healthChange){
+            currentHealth += healthChange;
+            
             if (currentHealth >= maxHealth)
                 currentHealth = maxHealth;
-        }
-
-        private void onDeath(){
-            foreach(Actor actor in observers){
-                actor.OnDeath();
-            }
-        }
-
-        public void RegisterObserver(Actor actor){
-            observers.Add(actor);
         }
     }
 }

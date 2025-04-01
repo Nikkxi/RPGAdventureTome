@@ -1,15 +1,32 @@
-﻿using System.Collections.Generic;
-using RPGAdventureTome.Items.Equipment;
+﻿using System;
+using RPGAdventureTome.Capabilities;
 
 namespace RPGAdventureTome.Actors
 {
-    public abstract class Actor
+    public abstract class Actor(Health health) : Attackable, Healable
     {
-        public List<Equipment> Equipment;
+        public int getCurrentHealth()
+        {
+            return health.getCurrentHealth();
+        }
+        public void TakeDamage(int damage)
+        {
+            health.UpdateHealth(-damage);
+            Console.WriteLine($"{this.GetType().Name} takes {damage} damage");
+            Console.WriteLine($"{this.GetType().Name} has {health.getCurrentHealth()} hp left");
+            Console.WriteLine();
+        }
 
-        public abstract void OnDeath();
+        public void OnDeath()
+        {
+            Console.WriteLine("OnDeath triggered!");
+        }
 
-        public abstract void TakeDamage(int damage);
-        
+        public void Heal(int healAmount)
+        {
+            health.UpdateHealth(healAmount);
+            Console.WriteLine($"{this.GetType().Name} heals for {healAmount}");
+            Console.WriteLine($"{this.GetType().Name} has {health.getCurrentHealth()} hp left");
+        }
     }
 }

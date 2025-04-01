@@ -9,7 +9,7 @@ using NLog.Targets;
 namespace RPGAdventureTomeTestLib.Tests
 {
     [TestFixture(Author = "SupCMDr", Description = "Actor Creation Tests")]
-    class ActorTests
+    class MonsterTests
     {
         private DataHandler loader;
         private Logger logger;
@@ -88,6 +88,46 @@ namespace RPGAdventureTomeTestLib.Tests
                 Assert.That(clone.GetName(), Is.EqualTo(breeds[index].GetName()));
                 index++;
             }
+        }
+
+        [Test]
+        public void DamageMonsterTest()
+        {
+            logger.Info("TEST: " + TestContext.CurrentContext.Test.Name);
+            
+            int health = 10;
+            int attack = 3;
+
+            Breed newBreed = new Breed("Orc", health, attack);
+
+            var monster = newBreed.newMonster();
+            
+            Assert.That(monster, Is.Not.Null);
+            Assert.That(monster.getCurrentHealth(), Is.EqualTo(health));
+
+            monster.TakeDamage(attack);
+            
+            Assert.That(monster.getCurrentHealth(), Is.EqualTo(health-attack));
+        }
+
+        [Test]
+        public void HealMonsterTest()
+        {
+            logger.Info("TEST: " + TestContext.CurrentContext.Test.Name);
+
+            int health = 10;
+            int attack = 3;
+
+            Breed newBreed = new Breed("Troll", health, attack);
+            
+            var monster = newBreed.newMonster();
+            
+            Assert.That(monster, Is.Not.Null);
+            monster.TakeDamage(attack);
+            Assert.That(monster.getCurrentHealth(), Is.EqualTo(health-attack));
+            
+            monster.Heal(attack);
+            Assert.That(monster.getCurrentHealth(), Is.EqualTo(health));
         }
     }
 }
