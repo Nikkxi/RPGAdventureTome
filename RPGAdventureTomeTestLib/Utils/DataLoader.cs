@@ -15,13 +15,15 @@ namespace RPGAdventureTomeTestLib.Utils
     {
         private readonly string DATA_DIRECTORY   = "./Data/";
 
-        JsonSerializerOptions serializationOptions;
-        private ILogger logger;
+        private readonly JsonSerializerOptions serializationOptions;
+        private readonly ILogger logger;
 
         public DataHandler()
         {
-            serializationOptions = new JsonSerializerOptions();
-            serializationOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+            serializationOptions = new JsonSerializerOptions
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+            };
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -34,7 +36,7 @@ namespace RPGAdventureTomeTestLib.Utils
 
         public List<Breed> LoadMonsterBreeds()
         {
-            List<Breed> breedList = new List<Breed>();
+            List<Breed> breedList = [];
 
             JsonDocument monsterBreeds = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("MonsterBreeds"), serializationOptions);
 
@@ -48,7 +50,7 @@ namespace RPGAdventureTomeTestLib.Utils
             {
                 var parent = monster.GetProperty("parent").GetString();
 
-                if(parent.Length == 0)
+                if(parent!=null && parent.Length == 0)
                 {
                     var name = monster.GetProperty("name").GetString();
                     var health = monster.GetProperty("health").GetInt32();
@@ -63,7 +65,7 @@ namespace RPGAdventureTomeTestLib.Utils
             {
                 var parent = monster.GetProperty("parent").GetString();
 
-                if (parent.Length > 0)
+                if (parent!=null && parent.Length > 0)
                 {
                     var name = monster.GetProperty("name").GetString();
                     var health = monster.GetProperty("health").GetInt32();

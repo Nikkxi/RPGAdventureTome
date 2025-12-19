@@ -10,7 +10,7 @@ using RPGAdventureTome.Items.Equipment;
 using RPGAdventureTomeTestLib;
 using RPGAdventureTomeTestLib.Utils;
 
-namespace RPGAdventureTomeTestLib.Tests
+namespace RPGAdventureTomeTestLib.Tests.ItemTests
 {
     [TestFixture(Author = "SupCMDr", Description = "Weapon Data Loading Tests")]
     public class WeaponTests
@@ -43,15 +43,21 @@ namespace RPGAdventureTomeTestLib.Tests
             newItem.AddAttack(new Attack(1, 4, 1));
 
             Assert.That(newItem, Is.Not.Null);
-            Assert.That(newItem.description, Is.Not.Null);
-            Assert.That(newItem.attack, Is.Not.Null);
-            Assert.That(newItem.attack.minDamage, Is.EqualTo(1));
-            Assert.That(newItem.attack.maxDamage, Is.EqualTo(4));
-            Assert.That(newItem.attack.range, Is.EqualTo(1));
-            Assert.That(newItem.weaponType, Is.EqualTo(WeaponType.SWORD));
+            Assert.Multiple(() =>
+            {
+                Assert.That(newItem.description, Is.Not.Null);
+                Assert.That(newItem.attack, Is.Not.Null);
+            });
+            Assert.Multiple(() =>
+            {
+                Assert.That(newItem.attack.minDamage, Is.EqualTo(1));
+                Assert.That(newItem.attack.maxDamage, Is.EqualTo(4));
+                Assert.That(newItem.attack.range, Is.EqualTo(1));
+                Assert.That(newItem.weaponType, Is.EqualTo(WeaponType.SWORD));
 
-            Assert.That(newItem.defense, Is.Null);
-            Assert.That(newItem.usables, Is.Empty);
+                Assert.That(newItem.defense, Is.Null);
+                Assert.That(newItem.usables, Is.Empty);
+            });
         }
 
         [Test]
@@ -66,14 +72,20 @@ namespace RPGAdventureTomeTestLib.Tests
             newItem.AddDefense(new Defense() { armor = 0, dodgeChance = 0 });
             
             Assert.That(newItem, Is.Not.Null);
-            Assert.That(newItem.name, Is.Not.Null);
-            Assert.That(newItem.description, Is.Not.Null);
-            Assert.That(newItem.attack, Is.Not.Null);
-            Assert.That(newItem.defense, Is.Not.Null);
-            Assert.That(newItem.usables, Is.Empty);
-            Assert.That(newItem.attack.minDamage, Is.EqualTo(1));
-            Assert.That(newItem.attack.maxDamage, Is.EqualTo(4));
-            Assert.That(newItem.attack.range, Is.EqualTo(3));
+            Assert.Multiple(() =>
+            {
+                Assert.That(newItem.name, Is.Not.Null);
+                Assert.That(newItem.description, Is.Not.Null);
+                Assert.That(newItem.attack, Is.Not.Null);
+                Assert.That(newItem.defense, Is.Not.Null);
+                Assert.That(newItem.usables, Is.Empty);
+            });
+            Assert.Multiple(() =>
+            {
+                Assert.That(newItem.attack.minDamage, Is.EqualTo(1));
+                Assert.That(newItem.attack.maxDamage, Is.EqualTo(4));
+                Assert.That(newItem.attack.range, Is.EqualTo(3));
+            });
         }
 
         [Test(Description = "Load Weapons test")]
@@ -82,7 +94,7 @@ namespace RPGAdventureTomeTestLib.Tests
             List<Weapon> weaponList = loader.LoadWeapons();
 
             logger.Info("Number of Weapons Loaded: " + weaponList.Count);
-            Assert.That(weaponList.Count, Is.Positive);
+            Assert.That(weaponList, Has.Count.GreaterThan(0));
 
             foreach (Equipment weapon in weaponList)
             {

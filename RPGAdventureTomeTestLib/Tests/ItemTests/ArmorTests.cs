@@ -9,7 +9,7 @@ using RPGAdventureTome.Items.Equipment;
 using RPGAdventureTome.Capabilities;
 using RPGAdventureTome.Items;
 
-namespace RPGAdventureTomeTestLib.Tests
+namespace RPGAdventureTomeTestLib.Tests.ItemTests
 {
     [TestFixture(Author = "SupCMDr", Description = "Weapon Data Loading Tests")]
     public class ArmorTests
@@ -40,8 +40,11 @@ namespace RPGAdventureTomeTestLib.Tests
             var newItem = new Armor(Name, Description);
 
             Assert.That(newItem, Is.Not.Null);
-            Assert.That(newItem.name, Is.Not.Null);
-            Assert.That(newItem.description, Is.Not.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(newItem.name, Is.Not.Null);
+                Assert.That(newItem.description, Is.Not.Null);
+            });
         }
 
         [Test]
@@ -54,10 +57,13 @@ namespace RPGAdventureTomeTestLib.Tests
             newItem.AddDefense(new Defense(){armor=10,dodgeChance=70});
 
             Assert.That(newItem, Is.Not.Null);
-            Assert.That(newItem.name, Is.Not.Null);
-            Assert.That(newItem.attack, Is.Not.Null);
-            Assert.That(newItem.defense, Is.Not.Null);
-            Assert.That(newItem.usables, Is.Not.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(newItem.name, Is.Not.Null);
+                Assert.That(newItem.attack, Is.Not.Null);
+                Assert.That(newItem.defense, Is.Not.Null);
+                Assert.That(newItem.usables, Is.Not.Null);
+            });
             Assert.That(newItem.usables, Is.Empty);
         }
 
@@ -66,7 +72,7 @@ namespace RPGAdventureTomeTestLib.Tests
             List<Armor> armorList = loader.LoadArmor();
 
             logger.Info("Number of Armors Loaded: " + armorList.Count);
-            Assert.That(armorList.Count, Is.Positive);
+            Assert.That(armorList, Has.Count.GreaterThan(0));
 
             foreach(Equipment armor in armorList)
             {
