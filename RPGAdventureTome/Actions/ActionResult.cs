@@ -10,7 +10,6 @@ namespace RPGAdventureTome.Actions
         public static readonly ActionResult Fail = new ActionResult(false, true);
         public static readonly ActionResult NotDone = new ActionResult(true, false);
 
-        private Action alternative;
         private bool succeeded;
         private bool done;
 

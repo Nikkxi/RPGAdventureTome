@@ -1,72 +1,15 @@
-﻿using RPGAdventureTome.Capabilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
-using RPGAdventureTome.Actors;
+namespace RPGAdventureTome.Items;
 
-namespace RPGAdventureTome.Items
+public abstract class Item
 {
-    public class Item
+    public string name { get; }
+    public string description { get; }
+    public ItemType itemType { get; }
+
+    protected Item(string name, string description,  ItemType itemType)
     {
-        [JsonInclude]
-        public string ItemName;
-
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public ItemType ItemType;
-        
-        [JsonInclude]
-        public Attack Melee;
-
-        [JsonInclude]
-        public Attack Range;
-
-        [JsonInclude]
-        public Defense Defense;
-
-        [JsonInclude]
-        public List<Use> Uses;
-
-        public Item()
-        {
-            this.ItemName = "";
-            this.ItemType = ItemType.NULL;
-            this.Melee = new Attack();
-            this.Range = new Attack();
-            this.Defense = new Defense();
-            this.Uses = new List<Use>();
-        }
-        public Item(string itemName, ItemType itemType, Attack melee, Attack range, Defense defense, List<Use> uses)
-        {
-            this.ItemName = itemName;
-            this.ItemType = itemType;
-            this.Melee = melee;
-            this.Range = range;
-            this.Defense = defense;
-            this.Uses = uses;
-        }
-
-        public void Print()
-        {
-            Console.WriteLine("\nItem Name: " + ItemName);
-            Console.WriteLine("ItemType: " + ItemType);
-            if(Melee != null) Console.WriteLine("Melee: " + Melee);
-            if(Range != null) Console.WriteLine("Range: " + Range);
-            if(Defense != null) Console.WriteLine("Defense: " + Defense);
-            if(Uses != null) Console.WriteLine("Uses: " + Uses);
-        }
-
-        public override string ToString()
-        {
-            string str = "";
-            str += $"\nItem Name: {ItemName}";
-            str += $"\nItemType: {ItemType}";
-            if(Melee != null) str += $"\nMelee: {Melee.MaxDamage}";
-            if(Range != null) str += $"\nRange: {Range.MaxDamage}";
-            if(Defense != null) str += $"\nDefense: {Defense.Armor}";
-            if(Uses != null) str += "$\nUses: {Uses}";
-
-            return str;
-        }
+        this.name = name;
+        this.description = description;
+        this.itemType = itemType;
     }
 }

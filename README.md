@@ -4,15 +4,16 @@ An RPG gamedev library for C#
 
 ### IN PROGRESS
 
-- Monster/Breed (using TypeObject pattern) with loading from data file (likely JSON)    
-
+- Monster/Breed    
+- Items    
+  - Weapons    
+  - Armor
 
 ### TO DO    
 
-- Player/Class    
+- Player/Monser    
+- Actions/Components
 - Items    
-  - Weapons
-  - Armor
   - Consumables
 - Spells
 - Item modifiers

@@ -1,22 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using RPGAdventureTome.Actors;
+using RPGAdventureTome.Capabilities.Effects;
 
 namespace RPGAdventureTome.Capabilities
 {
+
+    [Serializable]
     public class Attack
     {
-        [JsonInclude]
-        public int MinDamage;
 
-        [JsonInclude]
-        public int MaxDamage;
+        public int minDamage {get;set;}
+        public int maxDamage {get;set;}
+        public int range {get;set;} // from 0-n tile range
 
-        public int hit()
-        {
+
+        public Attack(){
+            // Default Null option
+            minDamage = 0;
+            maxDamage = 0;
+            range = 0;
+        }
+
+        public Attack(int MinDamage, int MaxDamage, int Range){
+            this.minDamage = MinDamage;
+            this.maxDamage = MaxDamage;
+            this.range = Range;
+        }
+
+        public void Perform(Actor target){
             Random r = new Random();
-            return r.Next(MinDamage, MaxDamage);
+            int damage = r.Next(minDamage, maxDamage);
+            target.TakeDamage(damage);
         }
     }
 }

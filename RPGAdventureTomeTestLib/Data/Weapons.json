@@ -1,57 +1,62 @@
 [
-    {
-        "ItemName": "Copper Sword",
-        "ItemType": "SWORD",
-        "Melee":{
-            "MinDamage": 1,
-            "MaxDamage": 6
-        },
-        "Range": null,
-        "Defense": null,
-        "Uses": []
+  {
+    "name": "Copper Sword",
+    "description": "A simple sword made of copper.",
+    "weaponType": "SWORD",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 6,
+      "range": 1
     },
-    {
-        "ItemName": "Iron Dagger",
-        "ItemType": "DAGGER",
-        "Melee":{
-            "MinDamage": 1,
-            "MaxDamage": 4
-        },
-        "Range": null,
-        "Defense": null,
-        "Uses": []
+    "defense": null,
+    "usables": []
+  },
+  {
+    "name": "Iron Dagger",
+    "description": "A simple dagger made of iron.",
+    "weaponType": "DAGGER",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 4,
+      "range": 1
     },
-    {
-        "ItemName": "Silver Mace",
-        "ItemType": "HAMMER",
-        "Melee":{
-            "MinDamage": 1,
-            "MaxDamage": 8
-        },
-        "Range": null,
-        "Defense": null,
-        "Uses": []
+    "defense": null,
+    "usables": []
+  },
+  {
+    "name": "Silver Mace",
+    "description": "A simple mace coated with silver.",
+    "weaponType": "HAMMER",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 8,
+      "range": 1
     },
-    {
-        "ItemName": "Wooden Staff",
-        "ItemType": "STAFF",
-        "Melee":{
-            "MinDamage": 1,
-            "MaxDamage": 6
-        },
-        "Range": null,
-        "Defense": null,
-        "Uses": []
+    "defense": null,
+    "usables": []
+  },
+  {
+    "name": "Wooden Staff",
+    "description": "A staff carved from the limb of a tree.",
+    "weaponType": "STAFF",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 6,
+      "range": 1
     },
-    {
-        "ItemName": "Short Bow",
-        "ItemType": "BOW",
-        "Melee": null,
-        "Range":{
-            "MinDamage": 1,
-            "MaxDamage": 6
-        },
-        "Defense": null,
-        "Uses": []
-    }
+    "defense": null,
+    "usables": []
+  },
+  {
+    "name": "Short Bow",
+    "description": "A simple short bow made from the branch of a Yew tree.",
+    "weaponType": "BOW",
+    "attack": {
+      "minDamage": 1,
+      "maxDamage": 6,
+      "range": 4
+    },
+    "defense": null,
+    "usables": []
+  }
 ]

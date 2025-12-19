@@ -6,19 +6,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using NLog;
+using RPGAdventureTome.Items.Equipment;
 
 namespace RPGAdventureTomeTestLib.Utils
 {
-    class DataLoader
+    class DataHandler
     {
         private readonly string DATA_DIRECTORY   = "./Data/";
 
         JsonSerializerOptions serializationOptions;
+        private ILogger logger;
 
-        public DataLoader()
+        public DataHandler()
         {
             serializationOptions = new JsonSerializerOptions();
             serializationOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         private string ReadJsonFromFile(string fileName) {
@@ -34,6 +38,9 @@ namespace RPGAdventureTomeTestLib.Utils
 
             JsonDocument monsterBreeds = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("MonsterBreeds"), serializationOptions);
 
+            if (monsterBreeds == null)
+                return breedList;
+            
             var enumerator = monsterBreeds.RootElement.EnumerateArray();
 
             // iterate through to create base monster type
@@ -70,50 +77,12 @@ namespace RPGAdventureTomeTestLib.Utils
             return breedList;
         }
 
-        public List<Item> loadWeapons(){
-            List<Item> itemList = new List<Item>();
-
-            var items = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Weapons"), serializationOptions);
-            var enumerator = items.RootElement.EnumerateArray();
-
-            foreach(JsonElement item in enumerator)
-            {
-                //Console.WriteLine(item.GetProperty("ItemName").GetString());
-
-                var itemName = item.GetProperty("ItemName").GetString();
-                var itemType = item.GetProperty("ItemType").Deserialize<ItemType>();
-                var melee = item.GetProperty("Melee").Deserialize<Attack>();
-                var range = item.GetProperty("Range").Deserialize<Attack>();
-                var defense = item.GetProperty("Defense").Deserialize<Defense>();
-                var uses = item.GetProperty("Uses").Deserialize<List<Use>>();
-
-                itemList.Add(new Item(itemName, itemType, melee, range, defense, uses));
-            }
-
-            return itemList;
+        public List<Weapon> LoadWeapons(){
+            return JsonSerializer.Deserialize<List<Weapon>>(ReadJsonFromFile("Weapons"));
         }
 
-        public List<Item> loadArmor(){
-            List<Item> itemList = new List<Item>();
-
-            var items = JsonSerializer.Deserialize<JsonDocument>(ReadJsonFromFile("Armor"), serializationOptions);
-            var enumerator = items.RootElement.EnumerateArray();
-
-            foreach(JsonElement item in enumerator)
-            {
-                //Console.WriteLine(item.GetProperty("ItemName").GetString());
-
-                var itemName = item.GetProperty("ItemName").GetString();
-                var itemType = item.GetProperty("ItemType").Deserialize<ItemType>();
-                var melee = item.GetProperty("Melee").Deserialize<Attack>();
-                var range = item.GetProperty("Range").Deserialize<Attack>();
-                var defense = item.GetProperty("Defense").Deserialize<Defense>();
-                var uses = item.GetProperty("Uses").Deserialize<List<Use>>();
-
-                itemList.Add(new Item(itemName, itemType, melee, range, defense, uses));
-            }
-
-            return itemList;
+        public List<Armor> LoadArmor(){
+            return JsonSerializer.Deserialize<List<Armor>>(ReadJsonFromFile("Armor"));
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 namespace RPGAdventureTome.Modifiers
 {
-    public interface IModifier
+    public interface Modifier
     {
-        public void Modify();
+        public void apply();
     }
 }
 

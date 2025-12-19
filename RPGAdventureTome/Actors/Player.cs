@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RPGAdventureTome.Capabilities;
 
 namespace RPGAdventureTome.Actors
 {
-    class Player : Actor
+
+    public class Player : Actor
     {
+
+        public Player(): base(new Health(10)){
+            
+        }
+
+        public Player(Health health): base(health){
+            
+        }
     }
 }

@@ -1,24 +1,22 @@
 [
-    {
-        "ItemName": "Studded Leather",
-        "ItemType": "ARMOR",
-        "Melee": null,
-        "Range": null,
-        "Defense": {
-            "Armor": 12,
-            "DodgeChance": 75
-        },
-        "Uses": []
+  {
+    "name": "Studded Leather",
+    "description": "A Simple armor made of leather.  It's adorned with metal rivets.",
+    "attack": null,
+    "defense": {
+      "armor": 12,
+      "dodgeChance": 75
     },
-    {
-        "ItemName": "Bronze Curiass",
-        "ItemType": "ARMOR",
-        "Melee": null,
-        "Range": null,
-        "Defense": {
-            "Armor": 30,
-            "DodgeChance": 25
-        },
-        "Uses": []
-    }
+    "usables": []
+  },
+  {
+    "name": "Bronze Curiass",
+    "description": "A simple Cuiriass made of Bronze.",
+    "attack": null,
+    "defense": {
+      "armor": 30,
+      "dodgeChance": 25
+    },
+    "usables": []
+  }
 ]
